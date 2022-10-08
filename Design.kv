@@ -1,0 +1,618 @@
+WindowManager:
+	Home:
+	Join:
+	Login:
+	Encrypt_Decrypt:
+	FChooser:
+
+<Home>:
+	id: home
+	name: "home"
+	Image:
+		name: "bottom"
+		color: (200/255, 0/255, 0/255, 1)
+		allow_stretch: True
+		keep_ratio: False
+		source: "images/Bottom.png"
+	Image:
+		name: "crypto_bottom"
+		allow_stretch: True
+		source: "images/CryptoBottom.png"
+	Image:
+		name: "welcome"
+		color: (700/255, 700/255, 700/255, 1)
+		opacity: 300
+		x: 0
+		y: 100
+		source: "images/Welcome.png"
+
+	Label:
+		text: "Seleccione una opcion"
+		#font_name: "calibri"
+		font_size: 30
+		opacity: 4
+		pos_hint: {'center_x': 0.5}
+
+	Button:
+		text: "Iniciar Sesion"
+		disabled: False
+		size_hint:  .2, .1
+		opacity: .96
+		pos_hint: {'center_x': 0.2, 'center_y': 0.1}
+		on_release: app.root.current = "login"
+
+	Button:
+		text: "Registrarse"
+		disabled: False
+		size_hint: .2, .1
+		opacity: .96
+		pos_hint: {'center_x': 0.8, 'center_y': 0.1}
+		on_release: app.root.current = "join" #app.root.current = "en_de"
+
+<Join>:
+	id: join
+	name: "join"
+
+	Image:
+		name: "bottom"
+		color: (200/255, 0/255, 0/255, 1)
+		allow_stretch: True
+		keep_ratio: False
+		source: "images/Bottom.png"
+
+	Image:
+		name: "crypto_bottom"
+		allow_stretch: True
+		source: "images/CryptoBottom.png"
+
+	Button: # return to home
+		size_hint: .05, .05
+		y: 510
+		background_color: 0, 0, 0, 0
+		on_release: app.root.current = "home"
+		Image:
+			name: "to_return"
+			source: "images/ToReturn.png"
+			center_x: self.parent.center_x
+			center_y: self.parent.center_y
+			size: 45, 45
+
+	Label:
+		text: "Registrate"
+		font_size: 45
+		x: -190
+		y: 230
+
+	Label:
+		text: "Es rapido y facil"
+		font_size: 20
+		x: -215
+		y: 190
+	
+	TextInput:
+		id: name
+		hint_text: "Nombre"
+		opacity: .90
+		multiline: False
+		size_hint: .31, .06
+		x: 80
+		y: 400
+
+	TextInput:
+		id: middle_name
+		hint_text: "Apellido Paterno"
+		opacity: .90
+		multiline: False
+		size_hint: .31, .06
+		x: 80
+		y: 350
+
+	TextInput:
+		id: last_name
+		hint_text: "Apellido Materno"
+		opacity: .90
+		multiline: False
+		size_hint: .31, .06
+		x: 80
+		y: 300
+
+	TextInput:
+		id: email
+		hint_text: "Cuenta de Ethereum"
+		opacity: .90
+		multiline: False
+		size_hint: .31, .06
+		x: 80
+		y: 250
+
+	TextInput:
+		id: password
+		hint_text: "Contraseña de Ethereum"
+		opacity: .90
+		multiline: False
+		size_hint: .31, .06
+		password: True
+		x: 80
+		y: 200
+
+	TextInput:
+		id: password2
+		hint_text: "Contraseña (8 - 27 caracteres)"
+		opacity: .90
+		multiline: False
+		size_hint: .31, .06
+		password:True
+		x: 80
+		y: 150
+
+	Button:
+		size_hint: .05, .05
+		background_color: (0, 0, 0, 0)
+		on_press: root.actionListener1()
+		x: 80
+		y: 115
+		Image:
+			id: hidden_eye
+			center_x: self.parent.center_x
+			center_y: self.parent.center_y
+			size: 30, 30
+			opacity: 1
+			source: "images/HiddenEye.png"
+
+		Image:
+			id: visible_eye
+			center_x: self.parent.center_x
+			center_y: self.parent.center_y
+			size: 30, 30
+			opacity: 0
+			source: "images/VisibleEye.png"
+
+	Label:
+		text: "Mostrar Contraseña"
+		x: -172
+		y: -142
+
+	TextInput:
+		id: cert_information
+		font_size: 18
+		hint_text: "Información del Usuario"
+		opacity: .90
+		text: ""
+		disabled: True
+		multiline: False
+		size_hint: .55, .63
+		x: 317
+		y: 88
+
+	Button:
+		id: gen_keys
+		text: "Generar Claves"
+		size_hint: .15, .08
+		on_press: root.actionListener2()#############################
+		x: 80
+		y: 70
+
+	Button:
+		id: empty
+		text: "Vaciar campos"
+		size_hint: .15, .08
+		disabled: True
+		on_press: root.empty()
+		x: 200
+		y: 70
+
+	Button:
+		id: save
+		text: "Guardar"
+		size_hint: .14, .08
+		disabled: True
+		on_press: root.save()
+		on_release: app.root.current = "home"
+		x: 470
+		y: 30
+
+<Login>:
+	id: login
+	name: "login"
+
+	Image:
+		name: "bottom"
+		color: (200/255, 0/255, 0/255, 1)
+		allow_stretch: True
+		keep_ratio: False
+		source: "images/Bottom.png"
+
+	Image:
+		name: "crypto_bottom"
+		allow_stretch: True
+		source: "images/CryptoBottom.png"
+
+	Button: # return to home
+		size_hint: .05, .05
+		y: 510
+		background_color: 0, 0, 0, 0
+		on_release: app.root.current = "home"
+		Image:
+			name: "to_return"
+			source: "images/ToReturn.png"
+			center_x: self.parent.center_x
+			center_y: self.parent.center_y
+			size: 45, 45
+
+	Label:
+		text: "Iniciar Sesion"
+		font_size: 45
+		x: -170
+		y: 220
+
+	TextInput:
+		id: name
+		hint_text: "Nombre Completo"
+		opacity: .90
+		multilines: False
+		size_hint: .85, .06
+		background_color: (255/255, 255/255, 255/255, 1)
+		x: 60
+		y: 400
+
+	TextInput:
+		id: pass2
+		hint_text: "Contraseña"
+		opacity: .90
+		multilines: False
+		size_hint: .85, .06
+		background_color: (255/255, 255/255, 255/255, 1)
+		x: 60
+		y: 340
+	
+	TextInput:
+		id: pass1
+		hint_text: "Contraseña (Ethereum)"
+		opacity: .90
+		multilines: False
+		size_hint: .85, .06
+		background_color: (255/255, 255/255, 255/255, 1)
+		x: 60
+		y: 280
+
+	TextInput:
+		id: private_key_location
+		hint_text: "Directorio de su archivo 'private.key'"
+		opacity: .90
+		multilines: False
+		size_hint: .85, .06
+		x: 60
+		y: 220
+
+	Button:
+		id: check
+		text: "Checar"
+		size_hint: .18, .1
+		disabled: False
+		on_press: root.check()
+		x: 300
+		y: 100
+
+	Button:
+		id: log_in
+		text: "Iniciar Sesion"
+		size_hint: .18, .1
+		disabled: True
+		on_release: app.root.current = "en_de"
+		x: 450
+		y: 100
+
+	Button:
+		id: clean
+		text: "Limpiar"
+		size_hint: .18, .1
+		disabled: False
+		on_press: root.clean()
+		x: 150
+		y: 100
+
+
+<Encrypt_Decrypt>:
+	id: en_de
+	name: "en_de"
+	Image:
+		name: "bottom"
+		color: (200/255, 0/255, 0/255, 1)
+		allow_stretch: True
+		keep_ratio: False
+		source: "images/Bottom.png"
+	Image:
+		name: "crypto_bottom"
+		allow_stretch: True
+		source: "images/CryptoBottom.png"
+	# BoxLayout:
+	# 	orientation: 'vertical'
+	# 	size: root.width, root.height
+
+	# 	GridLayout:
+	# 		cols: 2
+	# 		pos_hint: {'x': 0.01}
+	# 		size: root.width, root.height * 0.2
+	# 		row_default_height: 60
+	# 		row_force_default: True
+	# 		spacing: 0.2
+	# 		padding: 5
+			
+	# 		Button:
+	# 			id: choose
+	# 			text: "Seleccionar"
+	# 			size_hint: (0.2, 1)
+	# 			disabled: False
+	# 			opacity: 1.5
+	# 			on_release: app.root.current = "fchooser"
+
+	# 		TextInput:
+	# 			id: directory
+	# 			text: 'Presione un radio button para actualizar la direccion despues de seleccionar archivo'
+	# 			multiline: True
+	# 			background_disabled_normal: ''
+	# 			disabled: True
+	# 			size_hint: (1, 0.9)
+	BoxLayout:
+		orientation: 'vertical'
+		size_hint: (0.85, 0.1)
+		size: (550,300)
+		pos_hint: {'center_x': 0.5, 'center_y': 0.93}
+		
+		GridLayout:
+			cols: 4
+			rows: 2
+			size_hint: (1, 0.5)
+
+			TextInput:
+				id: url_eth
+				hint_text: 'url'
+				size_hint: (0.5, 0.05)
+				#pos_hint: {'center_x': 0.95, 'center_y': 0.95}
+
+			TextInput:
+				id: clave_privada_eth
+				hint_text: 'clave privada de eth'
+				size_hint: (0.5, 0.05)
+				#pos_hint: {'center_x': 0.95, 'center_y': 0.95}
+
+			TextInput:
+				id: cuenta_eth
+				hint_text: 'tu cuenta'
+				size_hint: (0.5, 0.05)
+				#pos_hint: {'center_x': 0.95, 'center_y': 0.95}
+			
+			TextInput:
+				id: cuenta_destino_eth
+				hint_text: 'cuenta destino'
+				size_hint: (0.5, 0.05)
+				#pos_hint: {'center_x': 0.95, 'center_y': 0.95}
+				
+			Label: # para hacer espacio
+				text: ''
+				size_hint: (0.05, 0.05)
+				pos_hint: {'center_x': 0.5}
+
+			Label:
+				id: cantidad_eth
+				text: '0.00 eth'
+				size_hint: (0.05, 0.05)
+				pos_hint: {'center_x': 0.5}
+
+			#Label:
+			#	id: cantidad_eth
+			#	text: 'ultimo hash de transaccion: '
+			#	size_hint: (0.05, 0.05)
+
+	# Label:
+	# 	id: choose_text_1
+	# 	text: "Seleccione un metodo de cifrado:"
+	# 	font_size: 27
+	# 	opacity: 3.2
+	# 	pos_hint: {'center_x': 0.5, 'center_y': 0.85}
+	BoxLayout:
+		orientation: 'vertical'
+		size_hint: (0.85, 0.55)
+		#size: (550,300)
+		pos_hint: {'center_x': 0.5, 'center_y': 0.60}
+		
+		TextInput:
+			id: chatBox
+			hint_text: 'Chat donde aparecera el texto cifrado que usted envie'
+			multiline: True
+			background_disabled_normal: ''
+			disabled: True
+			size_hint: (1, 1)
+
+
+		
+
+	BoxLayout:
+		orientation: 'vertical'
+		size_hint: (0.85, 0.25)
+		size: (550,300)
+		pos_hint: {'center_x': 0.5, 'center_y': 0.15}
+
+		# Label:
+		# 	id: choose_text_2
+		# 	text: "Elija si desea cifrar o descifrar:"
+		# 	font_size: 23
+		# 	size_hint: (0.1, 0.1)
+		# 	pos_hint: {'center_x': 0.35, 'center_y': 0.5}
+		# 	opacity: 3
+
+		TextInput:
+			id: messageBox
+			hint_text: 'Ingrese un mensaje'
+			multiline: True
+			background_disabled_normal: ''
+			#pos_hint: {'center_x': 0.65}
+			disabled: False
+			size_hint: (1, 0.5)
+
+		GridLayout:
+			cols: 5
+			rows: 1
+			#pos_hint: {'x': 0.1}
+			size: root.width, root.height * 0.2
+			row_default_height: 60
+			row_force_default: True
+			spacing: 0.2
+			padding: 2
+
+			# CheckBox:
+			# 	id: rsa
+			# 	name: "RSA"
+			# 	group: "cypher"
+			# 	color: (0/255, 255/255, 0/255, 1)
+			# 	disabled: False
+			# 	opacity: 100
+			# 	size_hint: (0.1, 0.1) 
+			# 	on_active: root.onClickListener(self, self.active, 'cypher', 'RSA')
+
+			# Label:
+			# 	id: rsa_text
+			# 	text: "RSA"
+			# 	font_size: 23
+			# 	opacity: 2
+			# 	size_hint: (0.1, 0.1) 
+
+			
+
+			CheckBox:
+				id: enigma
+				name: "Enigma"
+				group: "cypher"
+				color: (0/255, 255/255, 0/255, 1)
+				disabled: False
+				opacity: 100
+				size_hint: (0.1, 0.1) 
+				on_active: root.onClickListener(self, self.active, 'cypher', 'Enigma')
+
+			Label:
+				id: enigma_text
+				text: "Enigma"
+				font_size: 23
+				opacity: 2
+				size_hint: (0.1, 0.1) 
+
+
+			CheckBox:
+				id: rot_13
+				name: "Rot 13"
+				group: "cypher"
+				color: (0/255, 255/255, 0/255, 1)
+				disabled: False
+				opacity: 100
+				size_hint: (0.1, 0.1) 
+				on_active: root.onClickListener(self, self.active, 'cypher', 'Rot 13')
+
+
+			Label:
+				id: rot_13_text
+				text: "Rot 13"
+				font_size: 23
+				opacity: 2
+				size_hint: (0.1, 0.1)
+
+			Button:
+				id: execute
+				text: "Ejecutar"
+				disabled: False
+				on_press: root.ejecutarCifrado()
+				size_hint: .2, .1
+				opacity: 1.5
+
+				# pos_hint: {'center_x': 0.2, 'center_y': 0.05}
+
+
+
+	# BoxLayout:
+	# 	orientation: 'vertical'
+	# 	size_hint: (0.5, 0.6)
+	# 	size: (550,300)
+	# 	pos_hint: {'center_x': 0.2, 'center_y': 0.15}
+
+		
+
+	# 	GridLayout:
+	# 		cols: 2
+	# 		pos_hint: {'x': 0.2}
+	# 		size: root.width, root.height * 0.2
+	# 		row_default_height: 60
+	# 		row_force_default: True
+	# 		spacing: 0.2
+	# 		padding: 5
+
+
+
+	# 		CheckBox:
+	# 			id: cifrado
+	# 			name: "Cifrado"
+	# 			group: "cypher_type"
+	# 			color: (0/255, 255/255, 0/255, 1)
+	# 			disabled: False
+	# 			opacity: 100
+	# 			size_hint: (0.1, 0.1)
+	# 			on_active: root.onClickListener(self, self.active, 'method', 'Cypher')
+
+	# 		Label:
+	# 			id: cifrado_text
+	# 			text: "Cifrado"
+	# 			font_size:19
+	# 			opacity: 1.5
+	# 			size_hint: (0.1, 0.1)
+
+	# 		CheckBox:
+	# 			id: descifrado
+	# 			name: "Descifrado"
+	# 			group: "cypher_type"
+	# 			color: (0/255, 255/255, 0/255, 1)
+	# 			disabled: False
+	# 			opacity: 100
+	# 			size_hint: (0.1, 0.1)
+	# 			on_active: root.onClickListener(self, self.active, 'method', 'Decypher')
+
+	# 		Label:
+	# 			id: descifrado_text
+	# 			text: "Descifrado"
+	# 			font_size: 19
+	# 			opacity: 1.5
+	# 			size_hint: (0.1, 0.1)
+
+	
+
+	# Label:
+	# 	id: info
+	# 	text: ''
+	# 	font_size: 20
+	# 	pos_hint: {'center_x': 0.5, 'center_y': 0.2}
+	# Label:
+	# 	text: 'si despues de seleccionar archivo y opciones\nno se desbloquea el boton, vuelva a seleccionar una opcion'
+	# 	font_size: 12
+	# 	pos_hint: {'center_x': 0.65, 'center_y': 0.05}
+		
+<FChooser>:
+	id: fchooser
+	name:"fchooser"
+	BoxLayout:
+		orientation: "vertical"
+		size: 100, 200
+		padding: 50
+		spacing: 20
+		Widget:
+			Button:
+				id: adding
+				name: "adding"
+				text: "Agregar"
+				disabled: True
+				size: 490, 40
+				opacity: .96
+				on_release: app.root.current = "en_de"
+				x: 30
+				y: 350
+			FileChooserIconView:
+				id: file_chooser
+				size: 500, 350
+				on_selection: fchooser.selected(file_chooser.selection)
+				y: -5
